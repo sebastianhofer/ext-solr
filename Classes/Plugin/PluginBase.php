@@ -273,10 +273,10 @@ abstract class PluginBase extends AbstractPlugin
                 }
             }
             // Overlaying labels from TypoScript (including fictitious language keys for non-system languages!):
-            if (isset($this->conf['_LOCAL_LANG.'])) {
+            if (null !== $this->typoScriptConfiguration->getLocalLangConfiguration()) {
                 // Clear the "unset memory"
                 $this->LOCAL_LANG_UNSET = array();
-                foreach ($this->conf['_LOCAL_LANG.'] as $languageKey => $languageArray) {
+                foreach ($this->typoScriptConfiguration->getLocalLangConfiguration() as $languageKey => $languageArray) {
                     // Remove the dot after the language key
                     $languageKey = substr($languageKey, 0, -1);
                     // Don't process label if the language is not loaded
